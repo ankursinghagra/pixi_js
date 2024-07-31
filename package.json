@@ -4,15 +4,21 @@
   "description": "Its a gamefied resume",
   "main": "index.js",
   "scripts": {
-    "build": "gulp",
+    "serve": "gulp",
+    "build": "gulp build",
     "test": "test index.js"
   },
   "author": "ankursinghagra@gmail.com",
   "license": "ISC",
-  "dependencies": {
-    "pixi": "^0.3.1"
-  },
   "devDependencies": {
-    "gulp": "^5.0.0"
+    "browser-sync": "^3.0.2",
+    "gulp": "^5.0.0",
+    "gulp-browserify": "^0.5.1",
+    "gulp-clean": "^0.4.0",
+    "gulp-tsc": "^1.3.2"
+  },
+  "dependencies": {
+    "pixi.js": "^6.5.10",
+    "graceful-fs": "4.2.2"
   }
 }
