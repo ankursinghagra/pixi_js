@@ -1,0 +1,14 @@
+{
+  "name": "professional_adventure",
+  "version": "0.0.1",
+  "description": "Its a gamefied resume",
+  "main": "index.js",
+  "scripts": {
+    "test": "test index.js"
+  },
+  "author": "ankursinghagra@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "pixi": "^0.3.1"
+  }
+}
