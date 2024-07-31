@@ -4,8 +4,26 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title></title>
+	<style>
+        *{margin: 0;padding: 0;}
+        body{
+        	background: black;
+        }
+        canvas {
+		    padding: 0;
+		    margin: 0;
+
+		    width: 100vw; 
+		    max-width: 100%; /* ensures that it doesn't overflow */
+		    height: auto;
+		    max-height: 100%; /* ensures that it doesn't overflow */
+
+		    user-select: none; /* removes accidental selection */
+		}
+    </style>
 </head>
 <body>
+	<div id="game"></div>
 	<script type="module" src="index.js"></script>
 </body>
 </html>
