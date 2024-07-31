@@ -4,11 +4,15 @@
   "description": "Its a gamefied resume",
   "main": "index.js",
   "scripts": {
+    "build": "gulp",
     "test": "test index.js"
   },
   "author": "ankursinghagra@gmail.com",
   "license": "ISC",
   "dependencies": {
     "pixi": "^0.3.1"
+  },
+  "devDependencies": {
+    "gulp": "^5.0.0"
   }
 }
