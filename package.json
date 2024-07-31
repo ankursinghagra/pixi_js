@@ -4,7 +4,7 @@
   "description": "Its a gamefied resume",
   "main": "index.js",
   "scripts": {
-    "serve": "gulp",
+    "start": "gulp",
     "build": "gulp build",
     "test": "test index.js"
   },

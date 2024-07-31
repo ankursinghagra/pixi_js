@@ -4,45 +4,42 @@ const browserSync = require('browser-sync').create();
 const browserify = require('gulp-browserify');
 const ts = require('gulp-typescript');
 
-async function cleanfiles(cb) {
-  await src('dist/**',{read: false}).pipe(clean());
-  cb();
+function cleanfiles() {
+  return src('dist', {read: false}).pipe(clean({force: true}));
 }
 
-async function htmlcopy(cb) {
-  await src('public/*.*').pipe(dest('dist/'));
-  cb();
+function htmlcopy() {
+  return src('public/**',{encoding: false}).pipe(dest('dist/'));
 }
 
 
 // process JS files and return the stream.
-async function jscopy(cb) {
-  await src('src/*.ts')
+function jscopy() {
+  return src('src/*.ts')
     .pipe(ts())
     .pipe(browserify({insertGlobals : true}))
     .pipe(dest('dist/'));
-  cb();
 }
 
 // reloading browsers
-async function reload(cb) {
+function browsersyncReload(cb) {
   browserSync.reload();
   cb();
 }
 
-async function live(){
+function browsersyncServe(){
   // Serve files from the root of this project
-    await browserSync.init({
+    return browserSync.init({
         server: {
             baseDir: "./dist"
         },
         open: false
     });
+}
 
-    // add browserSync.reload to the tasks array to make
-    // all browsers reload after tasks are complete.
-    await watch("src/*.ts", { delay: 1000 }, series(cleanfiles,htmlcopy,jscopy,reload));
+function watchTask(){
+  return watch("src/*.ts", { delay: 100 }, series(cleanfiles,htmlcopy,jscopy,browsersyncReload))
 }
 
 // use default task to launch Browsersync and watch JS files
-exports.default = series(cleanfiles,htmlcopy,jscopy,live);
+exports.default = series(cleanfiles,htmlcopy,jscopy,browsersyncServe,watchTask);
